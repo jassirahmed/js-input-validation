@@ -164,6 +164,7 @@
 
         .redstar {
             color: red;
+            font-size: 25px;
         }
 
         @media (max-width:550px) {
@@ -179,24 +180,25 @@
         <main class="bg">
             <form onsubmit="return result(event)" id="none">
                 <h1 class="text-light text-center">Validation Form</h1>
+
                 <div class="input">
-                    <label for="fname">First Name<span class="redstar">*</span></label>
-                    <input type="text" placeholder="FirstName" maxlength="15" id="fname">
+                    <label for="fname">First Name <span class="redstar">*</span></label>
+                    <input type="text" placeholder="First Name" maxlength="15" id="fname">
                     <p id="errorforfname"></p>
                 </div>
                 <div class="input">
-                    <label for="mname">Middle Name<span class="redstar">*</span></label>
-                    <input type="text" placeholder="MiddleName" maxlength="15" id="mname">
+                    <label for="mname">Middle Name <span class="redstar">*</span></label>
+                    <input type="text" placeholder="Middle Name" maxlength="15" id="mname">
                     <p id="errorformname"></p>
                 </div>
                 <div class="input">
-                    <label for="lname" class="forlname">Last Name<span class="redstar">*</span></label>
-                    <input type="text" placeholder="LastName" maxlength="15" id="lname">
+                    <label for="lname" class="forlname">Last Name <span class="redstar">*</span></label>
+                    <input type="text" placeholder="Last Name" maxlength="15" id="lname">
                     <p id="errorforlname"></p>
                 </div>
                 <div class="input">
                     <label for="number">Mobile Number <span class="redstar">*</span></label>
-                    <input type="number" placeholder="Number" id="number"
+                    <input type="number" placeholder="Phone Number" id="number"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         maxlength="10">
                     <p id="errorfornumber"></p>
@@ -233,12 +235,12 @@
                 </div>
                 <div class="input">
                     <label for="confirmpassword">Confirm Password <span class="redstar">*</span></label>
-                    <input type="password" placeholder="Confirm Password" id="confirmpassword" maxlength="15">
+                    <input type="text" placeholder="Same as Password" id="confirmpassword" maxlength="15">
                     <p id="errorforconfirmpassword"></p>
                 </div>
                 <div class="terms">
                     <label for="termsandcondition"> Terms & Condition </label>
-                    <input class="form-check-input m" type="radio" id="terms" required>
+                    <input class="form-check-input m" type="radio" id="terms" name="terms">
                 </div>
                 <div class="text-center">
                     <p id="errorforterms"></p>
@@ -257,7 +259,7 @@
                     <p>Name </p><b>:</b> <span id="fullnameresult"></span>
                 </div>
                 <div class="flex">
-                    <p>Number</p> <b>:</b> <span id="numberresult"></span>
+                    <p>Mobile Number</p> <b>:</b> <span id="numberresult"></span>
                 </div>
                 <div class="flex">
                     <p>Email </p><b>:</b> <span id="emailresult"></span>
@@ -276,6 +278,9 @@
                 </div>
                 <div class="flex">
                     <p>Confirm Password</p><b>:</b> <span id="confirmpasswordresult"></span>
+                </div>
+                <div class="flex">
+                    <p>Terms and Condition</p><b>:</b> <span id="t&c"></span>
                 </div>
             </div>
         </div>
@@ -354,7 +359,7 @@
                 if (age >= 18) {
                     document.getElementById("errorfordob").innerHTML = "";
                 } else {
-                    document.getElementById("errorfordob").innerHTML = "Above 18 Compulsory"
+                    document.getElementById("errorfordob").innerHTML = "Age Must Be Above 18yrs"
                     ifAllInputsHaveValidated = false;
                 }
 
@@ -408,9 +413,9 @@
                 }
                 //Terms And Condition Validation
                 if (terms) {
-                    document.getElementById("errorforterms").innerHTML = "";
+                    document.getElementById("t&c").innerHTML = "Agreed";
+
                 } else {
-                    document.getElementById("errorforterms").innerHTML = "Please select the above checkbox";
                     ifAllInputsHaveValidated = false;
                 }
                 if (ifAllInputsHaveValidated) {
@@ -426,6 +431,7 @@
                         "url": valuefromfwebsite,
                         "password": valuefrompassword,
                         "cpass": valuefromconfirmpass
+
                     };
                     showMyViewContainer(send_data);
                 }
@@ -440,7 +446,7 @@
                     document.getElementById("errorforlname").innerHTML = "Last Name is Required!";
                 }
                 if (!dateofbirth) {
-                    document.getElementById("errorfordob").innerHTML = "The Valid DOB Required";
+                    document.getElementById("errorfordob").innerHTML = "DOB Required";
                 }
                 if (!mobileNo) {
                     document.getElementById("errorfornumber").innerHTML = "Moblie Number Required";
@@ -478,6 +484,7 @@
             document.getElementById("websiteresult").innerHTML = get_data.url;
             document.getElementById("passwordresult").innerHTML = get_data.password;
             document.getElementById("confirmpasswordresult").innerHTML = get_data.cpass;
+
         }
     </script>
 </body>
