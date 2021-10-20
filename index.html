@@ -23,10 +23,7 @@
             padding: 30px;
         }
 
-        h1 {
-            text-align: center;
-            color: #fff;
-        }
+
 
         main {
             border: 1px solid transparent;
@@ -150,7 +147,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #ff0000d9;
             font-size: 15px;
             font-weight: 700;
         }
@@ -178,7 +174,7 @@
     <div class="container">
         <main class="bg">
             <form onsubmit="return result(event)" id="none">
-                <h1>Validation Form</h1>
+                <h1 class="text-light text-center">Validation Form</h1>
                 <div class="input">
                     <label for="fname">First Name<span>*</span></label>
                     <input type="text" placeholder="FirstName" maxlength="15" id="fname">
@@ -223,24 +219,27 @@
                 </div>
                 <div class="input">
                     <label for="website">Website :</label>
-                    <input type="text" placeholder="URL" id="website">
+                    <input type="url" placeholder="URL" id="website">
                     <p id="errorforwebsite"></p>
                 </div>
                 <div class="input">
                     <label for="password">Password :</label>
-                    <input type="text" placeholder="Password" id="password" maxlength="15">
+                    <input type="password" placeholder="Password" id="password" maxlength="15">
                     <p id="errorforpassword"></p>
                 </div>
                 <div class="input">
                     <label for="confirmpassword">Confirm Password :</label>
-                    <input type="text" placeholder="Confirm Password" id="confirmpassword" maxlength="15">
+                    <input type="password" placeholder="Confirm Password" id="confirmpassword" maxlength="15">
                     <p id="errorforconfirmpassword"></p>
                 </div>
                 <div class="terms">
                     <label for="termsandcondition"> Terms & Condition </label>
                     <input class="form-check-input m" type="radio" id="terms" required>
+                </div>
+                <div class="text-center">
                     <p id="errorforterms"></p>
                 </div>
+
                 <div class="btn">
                     <button type="submit" class="btn btn-outline-success">SUBMIT</button>
                 </div>
@@ -248,7 +247,7 @@
         </main>
         <div class="right bg-dark bg-gradient" id="block">
             <div class="align">
-                <h1>Result</h1>
+                <h1 class="text-light text-center">Result</h1>
 
                 <div class="flex">
                     <p>Name </p><b>:</b> <span id="fullnameresult"></span>
@@ -292,13 +291,15 @@
             var valuefromfwebsite = document.getElementById("website").value;
             var valuefrompassword = document.getElementById("password").value;
             var valuefromconfirmpass = document.getElementById("confirmpassword").value;
-            var name_regex = /^[a-zA-Z ]{2,30}$/;
+            var terms = document.querySelector('input[name="terms"]:checked');
 
 
-            if (valuefromfname && valuefrommname && valuefromlastname && dateofbirth && mobileNo && valuefromemail && valuefromfwebsite && valuefrompassword && valuefromconfirmpass) {
+            if (valuefromfname && valuefrommname && valuefromlastname && dateofbirth && mobileNo && valuefromemail &&
+                valuefromfwebsite && valuefrompassword && valuefromconfirmpass && terms) {
                 let ifAllInputsHaveValidated = true;
 
                 //Name validation
+                var name_regex = /^[a-zA-Z ]{2,30}$/;
                 if (name_regex.test(valuefromfname)) {
                     document.getElementById("errorforfname").innerHTML = "";
                 } else {
@@ -375,10 +376,11 @@
                 }
 
                 //URL
-                var urlpattern = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
+                var urlpattern =
+                    /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
 
 
-                if (valuefromfwebsite.match(urlpattern)) {
+                if (urlpattern.test(valuefromfwebsite)) {
                     document.getElementById("errorforwebsite").innerHTML = "";
                 } else {
                     document.getElementById("errorforwebsite").innerHTML = "Invald URL";
@@ -398,8 +400,15 @@
                     document.getElementById("errorforconfirmpassword").innerHTML = "";
                 } else {
                     document.getElementById("errorforconfirmpassword").innerHTML = "Not Match With Password"
+                    ifAllInputsHaveValidated = false;
                 }
-
+                //Terms And Condition Validation
+                if (terms) {
+                    document.getElementById("errorforterms").innerHTML = "";
+                } else {
+                    document.getElementById("errorforterms").innerHTML = "Please select the above checkbox";
+                    ifAllInputsHaveValidated = false;
+                }
                 if (ifAllInputsHaveValidated) {
                     // alert("got a value");
                     let send_data = {
@@ -441,8 +450,12 @@
                 if (!valuefrompassword) {
                     document.getElementById("errorforpassword").innerHTML = "Password Requred";
                 }
-                if (!valuefromconfirmpass)
+                if (!valuefromconfirmpass) {
                     document.getElementById("errorforconfirmpassword").innerHTML = "Confirm Password Required";
+                }
+                if (!terms) {
+                    document.getElementById("errorforterms").innerHTML = "Please select the above checkbox";
+                }
             }
 
         }
