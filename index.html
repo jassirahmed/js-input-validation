@@ -162,6 +162,10 @@
             margin: 10px 0px 0px 6px;
         }
 
+        .redstar {
+            color: red;
+        }
+
         @media (max-width:550px) {
             main {
                 width: 100%;
@@ -176,29 +180,29 @@
             <form onsubmit="return result(event)" id="none">
                 <h1 class="text-light text-center">Validation Form</h1>
                 <div class="input">
-                    <label for="fname">First Name<span>*</span></label>
+                    <label for="fname">First Name<span class="redstar">*</span></label>
                     <input type="text" placeholder="FirstName" maxlength="15" id="fname">
                     <p id="errorforfname"></p>
                 </div>
                 <div class="input">
-                    <label for="mname">Middle Name<span>*</span></label>
+                    <label for="mname">Middle Name<span class="redstar">*</span></label>
                     <input type="text" placeholder="MiddleName" maxlength="15" id="mname">
                     <p id="errorformname"></p>
                 </div>
                 <div class="input">
-                    <label for="lname" class="forlname">Last Name<span>*</span></label>
+                    <label for="lname" class="forlname">Last Name<span class="redstar">*</span></label>
                     <input type="text" placeholder="LastName" maxlength="15" id="lname">
                     <p id="errorforlname"></p>
                 </div>
                 <div class="input">
-                    <label for="number">Mobile Number :</label>
+                    <label for="number">Mobile Number <span class="redstar">*</span></label>
                     <input type="number" placeholder="Number" id="number"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         maxlength="10">
                     <p id="errorfornumber"></p>
                 </div>
                 <div class="input">
-                    <label for="email">Email :</label>
+                    <label for="email">Email <span class="redstar">*</span></label>
                     <input type="email" placeholder="Email" id="email">
                     <p id="errorforemail"></p>
                 </div>
@@ -213,22 +217,22 @@
                 </div>
 
                 <div class="input">
-                    <label for="dob" class="forblock">Date of Birth :</label>
+                    <label for="dob" class="forblock">Date of Birth <span class="redstar">*</span></label>
                     <input type="date" placeholder="Date Of Birth" id="dob">
                     <p id="errorfordob"></p>
                 </div>
                 <div class="input">
-                    <label for="website">Website :</label>
+                    <label for="website">Website <span class="redstar">*</span></label>
                     <input type="url" placeholder="URL" id="website">
                     <p id="errorforwebsite"></p>
                 </div>
                 <div class="input">
-                    <label for="password">Password :</label>
+                    <label for="password">Password <span class="redstar">*</span></label>
                     <input type="password" placeholder="Password" id="password" maxlength="15">
                     <p id="errorforpassword"></p>
                 </div>
                 <div class="input">
-                    <label for="confirmpassword">Confirm Password :</label>
+                    <label for="confirmpassword">Confirm Password <span class="redstar">*</span></label>
                     <input type="password" placeholder="Confirm Password" id="confirmpassword" maxlength="15">
                     <p id="errorforconfirmpassword"></p>
                 </div>
