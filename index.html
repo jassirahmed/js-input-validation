@@ -186,8 +186,24 @@
             font-weight: 400;
         }
 
+        .btn {
+            color: #fff;
+            font-size: 20px;
+            text-align: right;
+            margin-top: -13px;
+            text-decoration: underline;
+        }
+
         @media (max-width:550px) {
-            main {
+            .container {
+                width: 100%;
+            }
+
+            .main {
+                width: 100%;
+            }
+
+            #block {
                 width: 100%;
             }
         }
@@ -282,6 +298,8 @@
             </form>
         </main>
         <div class="right bg-dark bg-gradient" id="block">
+            <button class="btn" onclick="back()">Back</button>
+
             <div class="align">
                 <h1 class="text-light text-center">Result</h1>
 
@@ -535,6 +553,11 @@
             } else {
                 conpass.type = "password"
             }
+        }
+
+        function back() {
+            document.getElementById("block").style.display = "none";
+            document.getElementById("none").style.display = "block";
         }
     </script>
 </body>
