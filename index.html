@@ -168,6 +168,20 @@
             font-size: 25px;
         }
 
+        .input .show {
+            width: 15px;
+            height: 15px;
+            font-size: 10px;
+            padding-left: 0px;
+        }
+
+        .input .com {
+            margin: 15px 0 5px 8px;
+            display: inline-block;
+            font-size: 17px;
+            font-weight: 400;
+        }
+
         @media (max-width:550px) {
             main {
                 width: 100%;
@@ -232,11 +246,22 @@
                 <div class="input">
                     <label for="password">Password <span class="redstar">*</span></label>
                     <input type="password" placeholder="Password" id="password" maxlength="15">
+
+
+                    <input type="checkbox" onclick="myFun()" id="showpass" class="show">
+                    <label for="showpass" class="com">Show Password</label>
+
+
                     <p id="errorforpassword"></p>
                 </div>
                 <div class="input">
                     <label for="confirmpassword">Confirm Password <span class="redstar">*</span></label>
-                    <input type="text" placeholder="Same as Password" id="confirmpassword" maxlength="15">
+                    <input type="password" placeholder="Same as Password" id="confirmpassword" maxlength="15">
+
+
+                    <input type="checkbox" onclick="myFun1()" id="show" class="show">
+                    <label for="showcon" class="com">Show Confirm Password</label>
+
                     <p id="errorforconfirmpassword"></p>
                 </div>
                 <div class="terms">
@@ -486,6 +511,26 @@
             document.getElementById("passwordresult").innerHTML = get_data.password;
             document.getElementById("confirmpasswordresult").innerHTML = get_data.cpass;
 
+        }
+
+        function myFun() {
+            var pass = document.getElementById("password");
+            if (pass.type === "password") {
+                pass.type = "text";
+
+            } else {
+                pass.type = "password"
+            }
+        }
+
+        function myFun1() {
+            var conpass = document.getElementById("confirmpassword");
+            if (conpass.type === "password") {
+                conpass.type = "text";
+
+            } else {
+                pass.type = "password"
+            }
         }
     </script>
 </body>
