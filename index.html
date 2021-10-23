@@ -122,6 +122,10 @@
             text-transform: capitalize;
         }
 
+        .flex .none {
+            text-transform: none;
+        }
+
         .gender {
             padding: 15px 0px;
         }
@@ -288,7 +292,7 @@
                     <p>Mobile Number</p> <b>:</b> <span id="numberresult"></span>
                 </div>
                 <div class="flex">
-                    <p>Email </p><b>:</b> <span id="emailresult"></span>
+                    <p>Email </p><b>:</b> <span id="emailresult" class="none"></span>
                 </div>
                 <div class="flex">
                     <p>Gender</p><b>:</b> <span id="genderresult"></span>
@@ -297,7 +301,7 @@
                     <p>Date of Birth</p><b>:</b> <span id="dobresult"></span>
                 </div>
                 <div class="flex">
-                    <p>Website</p><b>:</b> <span id="websiteresult"></span>
+                    <p>Website</p><b>:</b> <span id="websiteresult" class="none"></span>
                 </div>
                 <div class="flex">
                     <p>Password</p><b>:</b> <span id="passwordresult"></span>
@@ -334,7 +338,7 @@
                 let ifAllInputsHaveValidated = true;
 
                 //Name validation
-                var name_regex = /^[a-zA-Z ]{2,30}$/;
+                var name_regex = /^[a-zA-Z^S]{2,30}$/;
                 if (name_regex.test(valuefromfname)) {
                     document.getElementById("errorforfname").innerHTML = "";
                 } else {
@@ -529,7 +533,7 @@
                 conpass.type = "text";
 
             } else {
-                pass.type = "password"
+                conpass.type = "password"
             }
         }
     </script>
