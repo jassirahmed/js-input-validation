@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/jpg" href="Favicon_Image_Location" />
     <style>
         * {
             margin: 0;
@@ -72,26 +73,19 @@
         }
 
         .right {
+            border: 1px solid #ffffff;
             width: 80%;
+            height: 100%;
             z-index: 20;
             margin: 0 auto;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            justify-content: center;
-            align-items: center;
-            bottom: -50px;
-            font-weight: 700;
-            z-index: 99;
+            display: none;
+            padding: 10px 10px;
         }
 
         .flex {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-
         }
 
         .flex p {
@@ -101,12 +95,10 @@
             font-size: 20px;
             font-weight: 600;
             color: #fff;
-            margin-bottom: 0px;
-
         }
 
         .flex b {
-            text-align: center;
+            text-align: left;
             width: 20%;
             color: #fff;
         }
