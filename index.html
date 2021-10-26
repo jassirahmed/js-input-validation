@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link rel="shortcut icon" type="image/jpg" href="Favicon_Image_Location" />
     <style>
         * {
@@ -387,15 +388,15 @@
                     const element = genderInputs[i];
                     if (element.id == "male") {
                         if (element.checked) {
-                            gender = "male";
+                            gender = "male" + '<i class="fas fa - male "></i>';
                         }
                     } else if (element.id == "female") {
                         if (element.checked) {
-                            gender = "female";
+                            gender = "female" + '<i class="fas fa-female"></i>';
                         }
                     } else {
                         if (element.checked) {
-                            gender = "others";
+                            gender = "others" + '<i class="fas fa-mars"></i>';
                         }
                     }
                 }
