@@ -74,7 +74,6 @@
         }
 
         .right {
-            border: 1px solid #ffffff;
             width: 80%;
             height: 100%;
             z-index: 20;
@@ -196,6 +195,43 @@
             border: none;
         }
 
+        .genders {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px 0px;
+        }
+
+        .genders span {
+            width: 10%;
+        }
+
+        .genders .logo {
+            width: 30%;
+            text-align: left;
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            list-style: none;
+            font-size: 30px;
+        }
+
+        .logo .others {
+            color: #09e709;
+            display: none;
+        }
+
+        .logo .female {
+            color: #e50707;
+            display: none;
+        }
+
+        .logo .male {
+            color: blue;
+            display: none;
+        }
+
         @media (max-width:550px) {
             .container {
                 width: 100%;
@@ -281,7 +317,7 @@
 
 
                 <input type="checkbox" onclick="myFun1()" id="show" class="show">
-                <label for="showcon" class="com">Show Confirm Password</label>
+                <label for="show" class="com">Show Confirm Password</label>
 
                 <p id="errorforconfirmpassword"></p>
             </div>
@@ -298,7 +334,7 @@
             </div>
         </form>
 
-        <div class="right bg-dark bg-gradient" id="block">
+        <div class="right" id="block">
             <button class="close" onclick="back()">Back</button>
 
             <div class="align">
@@ -314,7 +350,14 @@
                     <p>Email </p><b>:</b> <span id="emailresult" class="none"></span>
                 </div>
                 <div class="flex">
-                    <p>Gender</p><b>:</b> <span id="genderresult"></span>
+                    <div class="genders">
+                        <p>Gender</p><b>:</b> <span id="genderresult">Name</span>
+                        <ul class="logo">
+                            <li id="mal" class="male"><i class="fas fa-male"></i></li>
+                            <li id="femal" class="female"><i class="fas fa-female"></i></li>
+                            <li id="other" class="others"><i class="fas fa-mars"></i></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="flex">
                     <p>Date of Birth</p><b>:</b> <span id="dobresult"></span>
@@ -388,18 +431,22 @@
                     const element = genderInputs[i];
                     if (element.id == "male") {
                         if (element.checked) {
-                            gender = "male" + '<i class="fas fa - male "></i>';
+                            gender = "male";
+                            document.getElementById("mal").style.display = "block";
                         }
                     } else if (element.id == "female") {
                         if (element.checked) {
-                            gender = "female" + '<i class="fas fa-female"></i>';
+                            gender = "female";
+                            document.getElementById("femal").style.display = "block";
                         }
                     } else {
                         if (element.checked) {
-                            gender = "others" + '<i class="fas fa-mars"></i>';
+                            gender = "others";
+                            document.getElementById("other").style.display = "block";
                         }
                     }
                 }
+
                 console.log("gender", gender);
 
                 //DOB Validation
