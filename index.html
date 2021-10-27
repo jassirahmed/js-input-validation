@@ -31,22 +31,12 @@
             position: relative;
         }
 
-        main::before {
-            content: "";
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background-color: #0000004a;
-            border-radius: 30px;
-        }
-
         form {
             padding: 30px;
-            position: relative;
+        }
+
+        .input {
+            margin-bottom: 20px;
         }
 
         .input input {
@@ -94,7 +84,7 @@
         }
 
         .right {
-            width: 80%;
+            width: 100%;
             height: 100%;
             z-index: 20;
             margin: 0 auto;
@@ -121,9 +111,10 @@
         }
 
         .flex b {
-            text-align: left;
-            width: 20%;
+            text-align: center;
+            width: 5%;
             color: #fff;
+            font-size: 20px;
         }
 
         .flex span {
@@ -135,7 +126,7 @@
             text-overflow: ellipsis;
             overflow: hidden;
             text-align: left;
-            width: 40%;
+            width: 55%;
             color: #fff;
             text-transform: capitalize;
         }
@@ -145,15 +136,28 @@
         }
 
         .gender {
-            padding: 15px 0px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .gender .gen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gen .checkbox {
+            width: 20px;
+            margin: 0px;
+        }
+
+        .gen label {
+            margin: 0 0 0 10px;
         }
 
         ::-webkit-inner-spin-button {
             display: none;
-        }
-
-        .form-check-label {
-            margin: 0px;
         }
 
         .btn {
@@ -216,25 +220,23 @@
         }
 
         .genders {
-            width: 100%;
+            width: 55%;
             display: flex;
-            justify-content: center;
+            text-align: left;
             align-items: center;
-            margin: 15px 0px;
+            padding-left: 10px;
+
         }
 
         .genders span {
-            width: 10%;
+            text-align: left;
         }
 
-        .genders .logo {
-            width: 30%;
-            text-align: left;
-            padding: 0px;
-            margin: 0px;
+        .logo {
             display: flex;
-            list-style: none;
-            font-size: 30px;
+            padding: 0px;
+            font-size: 25px;
+
         }
 
         .logo .others {
@@ -252,12 +254,9 @@
             display: none;
         }
 
-        @media (max-width:550px) {
-            .container {
-                width: 100%;
-            }
+        @media (max-width:850px) {
 
-            .main {
+            main {
                 width: 100%;
             }
 
@@ -300,16 +299,23 @@
                 <input type="email" placeholder="Email" id="email">
                 <p id="errorforemail"></p>
             </div>
-            <div class="gender">
+            <div class="input">
                 <h2>Gender :-</h2>
-                <input class="form-check-input" type="radio" value="male" id="male" name="gender" checked>
-                <label class="form-check-label" for="male">Male</label>
-                <input class="form-check-input" type="radio" value="female" id="female" name="gender">
-                <label class="form-check-label" for="female">Female</label>
-                <input class="form-check-input" type="radio" id="other" value="other" name="gender">
-                <label class="form-check-label" for="other">Others</label>
+                <div class="gender">
+                    <div class="gen">
+                        <input class="checkbox" type="radio" value="male" id="male" name="gender" checked>
+                        <label class="" for="male">Male</label>
+                    </div>
+                    <div class="gen">
+                        <input class="checkbox" type="radio" value="female" id="female" name="gender">
+                        <label class="" for="female">Female</label>
+                    </div>
+                    <div class="gen">
+                        <input class="checkbox" type="radio" id="other" value="other" name="gender">
+                        <label class="" for="other">Others</label>
+                    </div>
+                </div>
             </div>
-
             <div class="input">
                 <label for="dob" class="forblock">Date of Birth <span class="redstar">*</span></label>
                 <input type="date" placeholder="Date Of Birth" id="dob">
@@ -353,6 +359,11 @@
                 <button type="submit" class="btn btn-outline-success">SUBMIT</button>
             </div>
         </form>
+        <div class="mg">
+            <img src="https://static.thenounproject.com/png/163045-200.png" alt="">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3gdlQYoucdiE-A2fJdujzgnGesp-O0Tr4hdwBeI2Jfqs9G5p_wVhgmlgCJzCWnDNpBkk&usqp=CAU"
+                alt="">
+        </div>
 
         <div class="right" id="block">
             <button class="close" onclick="changeon()">Back</button>
@@ -370,13 +381,14 @@
                     <p>Email </p><b>:</b> <span id="emailresult" class="none"></span>
                 </div>
                 <div class="flex">
+                    <p>Gender</p><b>:</b>
                     <div class="genders">
-                        <p>Gender</p><b>:</b> <span id="genderresult">Name</span>
                         <ul class="logo">
                             <li id="mal" class="male"><i class="fas fa-male"></i></li>
                             <li id="femal" class="female"><i class="fas fa-female"></i></li>
                             <li id="other" class="others"><i class="fas fa-mars"></i></li>
                         </ul>
+                        <span id="genderresult"></span>
                     </div>
                 </div>
                 <div class="flex">
