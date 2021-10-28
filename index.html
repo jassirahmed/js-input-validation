@@ -16,7 +16,6 @@
         }
 
         body {
-            background-color: #00DBDE;
             background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
             padding: 30px;
         }
@@ -25,7 +24,6 @@
             border: 1px solid transparent;
             width: 50%;
             margin: 0 auto;
-            background-color: #FA8BFF;
             background-image: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
             border-radius: 30px;
             position: relative;
@@ -39,7 +37,7 @@
             margin-bottom: 20px;
         }
 
-        .input input {
+        .input .all-inputs {
             width: 100%;
             height: 40px;
             font-size: 20px;
@@ -50,9 +48,6 @@
             background-color: transparent;
             outline: none;
             border-bottom: 2px solid #fff;
-        }
-
-        input {
             margin-bottom: 5px;
         }
 
@@ -136,24 +131,68 @@
         }
 
         .gender {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            margin-bottom: 50px;
+        }
+
+        .gen .mg {
+            display: block;
+            text-align: center;
+        }
+
+        .mg img {
+            max-height: 50px;
         }
 
         .gender .gen {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: inline-block;
+            position: relative;
+            margin-right: 15px;
         }
 
         .gen .checkbox {
             width: 20px;
-            margin: 0px;
+            height: 20px;
+            position: absolute;
+            top: 20px;
+            left: 5px;
         }
 
         .gen label {
-            margin: 0 0 0 10px;
+            display: inline-block;
+            border: 1px solid black;
+            border-radius: 15px;
+            min-width: 130px;
+            text-align: center;
+            padding: 15px;
+
+        }
+
+        .gen label.male {
+            border-color: red;
+        }
+
+        .gen label.female {
+            border-color: pink;
+        }
+
+        .gen label.others {
+            border-color: yellow;
+        }
+
+        .gen input:not(:checked)+label {
+            cursor: pointer;
+        }
+
+        .gen input:checked+label.male {
+            background: linear-gradient(90deg, rgba(82, 61, 199, 1) 0%, rgba(42, 176, 138, 1) 87%);
+        }
+
+        .gen input:checked+label.female {
+            background: linear-gradient(90deg, rgba(199, 61, 61, 1) 0%, rgba(176, 42, 159, 1) 87%);
+        }
+
+        .gen input:checked+label.others {
+            background: linear-gradient(90deg, rgba(199, 197, 61, 1) 0%, rgba(175, 42, 176, 1) 100%);
         }
 
         ::-webkit-inner-spin-button {
@@ -274,29 +313,29 @@
 
             <div class="input">
                 <label for="fname">First Name <span class="redstar">*</span></label>
-                <input type="text" placeholder="First Name" maxlength="15" id="fname">
+                <input class="all-inputs" type="text" placeholder="First Name" maxlength="15" id="fname">
                 <p id="errorforfname"></p>
             </div>
             <div class="input">
                 <label for="mname">Middle Name <span class="redstar">*</span></label>
-                <input type="text" placeholder="Middle Name" maxlength="15" id="mname">
+                <input class="all-inputs" type="text" placeholder="Middle Name" maxlength="15" id="mname">
                 <p id="errorformname"></p>
             </div>
             <div class="input">
                 <label for="lname" class="forlname">Last Name <span class="redstar">*</span></label>
-                <input type="text" placeholder="Last Name" maxlength="15" id="lname">
+                <input class="all-inputs" type="text" placeholder="Last Name" maxlength="15" id="lname">
                 <p id="errorforlname"></p>
             </div>
             <div class="input">
                 <label for="number">Mobile Number <span class="redstar">*</span></label>
-                <input type="number" placeholder="Phone Number" id="number"
+                <input class="all-inputs" type="number" placeholder="Phone Number" id="number"
                     oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                     maxlength="10">
                 <p id="errorfornumber"></p>
             </div>
             <div class="input">
                 <label for="email">Email <span class="redstar">*</span></label>
-                <input type="email" placeholder="Email" id="email">
+                <input class="all-inputs" type="email" placeholder="Email" id="email">
                 <p id="errorforemail"></p>
             </div>
             <div class="input">
@@ -304,31 +343,44 @@
                 <div class="gender">
                     <div class="gen">
                         <input class="checkbox" type="radio" value="male" id="male" name="gender" checked>
-                        <label class="" for="male">Male</label>
+                        <label for="male" class="male">
+                            <span>Male</span>
+                            <span class="mg"><img src="Images/male.png" alt=""></span>
+                        </label>
                     </div>
+
                     <div class="gen">
                         <input class="checkbox" type="radio" value="female" id="female" name="gender">
-                        <label class="" for="female">Female</label>
+                        <label for="female" class="female">
+                            <span> Female</span>
+                            <span class="mg"><img src="https://image.flaticon.com/icons/png/512/103/103277.png"
+                                    alt=""></span>
+                        </label>
                     </div>
+
                     <div class="gen">
                         <input class="checkbox" type="radio" id="other" value="other" name="gender">
-                        <label class="" for="other">Others</label>
+                        <label for="other" class="others">
+                            <span> Others</span>
+                            <span class="mg" id="ot"><img src="Images/transgender.png" alt=""></span>
+                        </label>
+
                     </div>
                 </div>
             </div>
             <div class="input">
                 <label for="dob" class="forblock">Date of Birth <span class="redstar">*</span></label>
-                <input type="date" placeholder="Date Of Birth" id="dob">
+                <input class="all-inputs" type="date" placeholder="Date Of Birth" id="dob">
                 <p id="errorfordob"></p>
             </div>
             <div class="input">
                 <label for="website">Website <span class="redstar">*</span></label>
-                <input type="url" placeholder="URL" id="website">
+                <input class="all-inputs" type="url" placeholder="URL" id="website">
                 <p id="errorforwebsite"></p>
             </div>
             <div class="input">
                 <label for="password">Password <span class="redstar">*</span></label>
-                <input type="password" placeholder="Password" id="password" maxlength="15">
+                <input class="all-inputs" type="password" placeholder="Password" id="password" maxlength="15">
 
 
                 <input type="checkbox" onclick="myFun()" id="showpass" class="show">
@@ -339,7 +391,8 @@
             </div>
             <div class="input">
                 <label for="confirmpassword">Confirm Password <span class="redstar">*</span></label>
-                <input type="password" placeholder="Same as Password" id="confirmpassword" maxlength="15">
+                <input class="all-inputs" type="password" placeholder="Same as Password" id="confirmpassword"
+                    maxlength="15">
 
 
                 <input type="checkbox" onclick="myFun1()" id="show" class="show">
@@ -359,11 +412,6 @@
                 <button type="submit" class="btn btn-outline-success">SUBMIT</button>
             </div>
         </form>
-        <div class="mg">
-            <img src="https://static.thenounproject.com/png/163045-200.png" alt="">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3gdlQYoucdiE-A2fJdujzgnGesp-O0Tr4hdwBeI2Jfqs9G5p_wVhgmlgCJzCWnDNpBkk&usqp=CAU"
-                alt="">
-        </div>
 
         <div class="right" id="block">
             <button class="close" onclick="changeon()">Back</button>
@@ -465,16 +513,19 @@
                         if (element.checked) {
                             gender = "male";
                             document.getElementById("mal").style.display = "block";
+
                         }
                     } else if (element.id == "female") {
                         if (element.checked) {
                             gender = "female";
                             document.getElementById("femal").style.display = "block";
+
                         }
                     } else {
                         if (element.checked) {
                             gender = "others";
                             document.getElementById("other").style.display = "block";
+
                         }
                     }
                 }
@@ -643,6 +694,14 @@
             document.getElementById("block").style.display = "none";
             document.getElementById("none").style.display = "block";
         }
+
+        // function chanegeColorM() {
+        //     var x = document.getElementById("male").checked;
+        //     if (x) {
+        //         document.getElementById("m").style.backgroundColor = "red";
+        //     }
+
+        // }
     </script>
 </body>
 
