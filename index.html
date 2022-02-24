@@ -274,6 +274,7 @@
             display: flex;
             padding: 0px;
             font-size: 25px;
+            margin: 0px;
 
         }
 
@@ -358,10 +359,10 @@
                     </div>
 
                     <div class="gen">
-                        <input class="checkbox" type="radio" id="other" value="other" name="gender">
-                        <label for="other" class="others">
+                        <input class="checkbox" type="radio" id="others" value="others" name="gender">
+                        <label for="others" class="others">
                             <span> Others</span>
-                            <span class="mg" id="ot"><img src="Images/transgender.png" alt=""></span>
+                            <span class="mg" ><img src="Images/transgender.png" alt=""></span>
                         </label>
 
                     </div>
@@ -520,7 +521,7 @@
                             document.getElementById("femal").style.display = "block";
 
                         }
-                    } else {
+                    } else  {
                         if (element.checked) {
                             gender = "others";
                             document.getElementById("other").style.display = "block";
